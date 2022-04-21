@@ -7,8 +7,8 @@ import { plugins } from "./gulp/config/plugin.js";
 
 //Передаем значения в глобальную переменую
 global.app = {
-    isBuild: process.argv.includes('--build'),
-    isDev: !process.argv.includes('--build'),
+    isBuild: process.argv.includes("--build"),
+    isDev: !process.argv.includes("--build"),
     path: path,
     gulp: gulp,
     plugins: plugins,
@@ -35,16 +35,19 @@ function watcher() {
     gulp.watch(path.watch.js, js); // gulp.series(js, ftp)
     gulp.watch(path.watch.images, images); // gulp.series(images, ftp)
 }
-
-export { svgSprive }
-
+// This is Dev
+var thiisDate = undefined;
+console.log(thiisDate);
+export { svgSprive };
 
 // Последовательная обработка шрифтов
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle);
 
-
 // Основные задачи
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, sass, js, images));
+const mainTasks = gulp.series(
+    fonts,
+    gulp.parallel(copy, html, sass, js, images)
+);
 
 // Построения сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
@@ -52,13 +55,11 @@ const build = gulp.series(reset, mainTasks);
 const deployZIP = gulp.series(reset, mainTasks, zip);
 const deployFTP = gulp.series(reset, mainTasks, ftp);
 
-
 // Экспорт сценариев
-export { dev }
-export { build }
-export { deployZIP }
-export { deployFTP }
-
+export { dev };
+export { build };
+export { deployZIP };
+export { deployFTP };
 
 // Выполнение сценария по умолчанию
 gulp.task("default", dev);
