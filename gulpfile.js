@@ -35,9 +35,6 @@ function watcher() {
     gulp.watch(path.watch.js, js); // gulp.series(js, ftp)
     gulp.watch(path.watch.images, images); // gulp.series(images, ftp)
 }
-// This is Dev
-var thiisDate = undefined;
-console.log(thiisDate);
 export { svgSprive };
 
 // Последовательная обработка шрифтов
