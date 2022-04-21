@@ -5,7 +5,9 @@ import { path } from "./gulp/config/path.js";
 //Импорт общих плагинов
 import { plugins } from "./gulp/config/plugin.js";
 
-//Передаем значения в глобальную переменую
+//Передаем значения в глобальную переменую 5
+
+//Тестурую
 global.app = {
     isBuild: process.argv.includes("--build"),
     isDev: !process.argv.includes("--build"),
@@ -14,7 +16,6 @@ global.app = {
     plugins: plugins,
 };
 
-//! This is version 05
 // Импорт задач
 import { copy } from "./gulp/tasks/copy.js";
 import { reset } from "./gulp/tasks/reset.js";
