@@ -14,7 +14,7 @@ global.app = {
     plugins: plugins,
 };
 
-//! This is version 04
+//! This is version 05
 // Импорт задач
 import { copy } from "./gulp/tasks/copy.js";
 import { reset } from "./gulp/tasks/reset.js";
